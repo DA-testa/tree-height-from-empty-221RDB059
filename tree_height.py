@@ -8,7 +8,7 @@ import os
 
 def compute_height(n: int, parents: list):
     # Write this function
-    max_height = 2
+    max_height = 0
     # Your code here
     parents.sort()
 
@@ -19,7 +19,7 @@ def compute_height(n: int, parents: list):
     while i < n:
         curr_num = parents[i]
         if last_num == curr_num:
-            nodes_available_after += 1
+            pass
         elif nodes_available > 0:
             nodes_available_after += 1
             nodes_available -= 1
