@@ -30,7 +30,7 @@ def compute_height(n: int, parents: list):
             max_height += 1
         last_num = parents[i]
         i += 1
-    return max_height
+    return max_height*2
 
 
 def main():
