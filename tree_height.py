@@ -36,7 +36,7 @@ def compute_height(n: int, parents: list):
 def main():
     # implement input form keyboard and from files
     test_type = input().lower()
-    if test_type == "f":
+    if test_type.find("f") != -1:
         file_name = input()
         with open(file_name) as f:
             n = int(f.readline())
