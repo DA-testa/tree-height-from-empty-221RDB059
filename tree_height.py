@@ -38,7 +38,7 @@ def main():
     test_type = input().lower()
     if test_type.find("f") != -1:
         file_name = input()
-        with open(f"test\{file_name}") as f:
+        with open(f"test/{file_name}") as f:
             n = int(f.readline())
             parents = list(map(int, f.readline().split(" ")))
             print(compute_height(n, parents))
