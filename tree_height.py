@@ -42,12 +42,10 @@ def main():
             n = int(f.readline())
             parents = list(map(int, f.readline().split(" ")))
             print(compute_height(n, parents))
-    elif test_type == "i":
+    else:
         n = int(input())
         parents = list(map(int, input().split(" ")))
         print(compute_height(n, parents))
-    else:
-        print("bruh")
 
     # let user input file name to use, don't allow file names with letter a
     # account for github input inprecision
