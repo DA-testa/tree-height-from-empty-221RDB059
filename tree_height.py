@@ -6,31 +6,28 @@ import numpy
 import os
 
 
-def compute_height(n: int, parents: list):
+def compute_height(n: int, parents: list, root=-1):
     # Write this function
-    max_height = 0
+
     # Your code here
-    parents.sort()
-
-    i = 0
-    nodes_available_after = 0
-    nodes_available = 1
-    last_num = 0  # The first number after sort should always be -1
-    while i < n:
-        curr_num = parents[i]
-        if last_num == curr_num:
-            pass
-        elif nodes_available > 0:
-            nodes_available_after += 1
-            nodes_available -= 1
-
+    children = {i: [] for i in range(n)}
+    for i, parent in enumerate(parents):
+        if parent == -1:
+            root = i
         else:
-            nodes_available = nodes_available_after
-            nodes_available_after = 0
+            children[parent].append(i)
+
+    max_height = 1
+    queue = [root]
+    while queue:
+        next_level = []
+        for node in queue:
+            next_level += children[node]
+        if next_level:
             max_height += 1
-        last_num = parents[i]
-        i += 1
-    return max_height*2
+        queue = next_level
+
+    return max_height
 
 
 def main():
@@ -42,10 +39,12 @@ def main():
             n = int(f.readline())
             parents = list(map(int, f.readline().split(" ")))
             print(compute_height(n, parents))
-    else:
+    elif test_type.find("i") != -1:
         n = int(input())
         parents = list(map(int, input().split(" ")))
         print(compute_height(n, parents))
+    else:
+        print("bruh")
 
     # let user input file name to use, don't allow file names with letter a
     # account for github input inprecision
